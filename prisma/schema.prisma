@@ -1,0 +1,55 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name                         String?
+  tier                         String?  @default("free")
+  accountId                    String?
+  proOrEnterpriseAccountId     String?
+  linkedAccountId              String?
+  accountName                  String?
+  proOrEnterpriseAccountName   String?
+  createdAt                    DateTime @default(now())
+  updatedAt                    DateTime @updatedAt
+}
+
+model Free_Accounts {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  totalTenants   Int?
+  count          Int
+  fullCapacity   Int      @default(10)
+  isFullCapacity Boolean? @default(false)
+  status         String   @default("ACTIVE")
+  poolLabel      String?
+  accountId      String
+  accountNumber  Int?
+  accountName    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  tier           String
+}
+
+model Pro_Or_Enterprise_Accounts {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  totalTenants   Int?
+  count          Int
+  fullCapacity   Int      @default(1)
+  isFullCapacity Boolean? @default(false)
+  status         String   @default("ACTIVE")
+  poolLabel      String?
+  accountId      String
+  accountNumber  Int?
+  accountName    String?
+  isAssigned     Boolean? @default(false)
+  assignedToUser String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  tier           String
+}

@@ -1,0 +1,31 @@
+{
+  "name": "nextjs-prisma-aws-multi-account-manager",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prisma:initialize": "npx prisma generate",
+    "build": "next build",
+    "dev": "npm run prisma:initialize && next dev",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@aws-sdk/client-iam": "^3.750.0",
+    "@aws-sdk/client-sts": "^3.750.0",
+    "@prisma/client": "5.13.0",
+    "next": "15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "22.13.5",
+    "@types/react": "19.0.10",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.7",
+    "postcss": "^8",
+    "prisma": "5.13.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "5.7.3"
+  }
+}
